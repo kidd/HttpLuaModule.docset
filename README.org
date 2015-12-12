@@ -1,0 +1,6 @@
+* HttpLuaModule.docSet
+  Generate dash docs for nginx lua module
+* Best used with
+  http://github.com/areina/helm-dash  :)
+* Author
+  Raimon Grau Cuscó <raimonster@gmail.com>
