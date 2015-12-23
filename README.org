@@ -2,5 +2,8 @@
   Generate dash docs for nginx lua module
 * Best used with
   http://github.com/areina/helm-dash  :)
+* Usage
+  1) sh ./import.sh
+  2) mv HttpLuaModule.docSet/ ~/your-docsets-path/
 * Author
   Raimon Grau Cuscó <raimonster@gmail.com>
