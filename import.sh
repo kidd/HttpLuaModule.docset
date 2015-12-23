@@ -31,3 +31,8 @@ sh categories.sql
 mkdir -p HttpLuaModule.docset/Contents/Resources/Documents
 mv docSet.dsidx HttpLuaModule.docset/Contents/Resources/
 mv HttpLuaModule.html HttpLuaModule.docset/Contents/Resources/Documents/
+
+
+# Alternative way, using xmlstarlet
+# xmlstarlet sel -T -t -m "/html/body/h2/a[@class='anchor']/parent::*"  -v self::h2 -o " => " -m "a" -v @href -n  README.markdown
+# xmlstarlet sel -T -t -m "/html/body/h1/a[@class='anchor']/parent::*"  -v self::h1 -o " => " -m "a" -v @href -n  README.markdown
