@@ -5,3 +5,6 @@ import:
 
 commit:
 	sh ./commit.sh
+
+install:
+	cp -r HttpLuaModule.docset ~/.docsets
