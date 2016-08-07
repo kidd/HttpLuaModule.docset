@@ -9,7 +9,7 @@ rm -fr HttpLuaModule.docset/
 wget https://github.com/openresty/lua-nginx-module/blob/master/README.markdown
 
 #clean it
-sed -i '1,/mainContentOfPage/d' README.markdown
+sed -i '1,/article class="markdown-body entry-content"/d' README.markdown
 
 # Prepare valid html page
 echo '<html><body>' > HttpLuaModule.html
@@ -20,8 +20,8 @@ sqlite3 docSet.dsidx  'create table searchIndex(id INTEGER PRIMARY KEY, name TEX
 
 
 # Fetch functions and categories
-grep 'class="anchor"' README.markdown| grep h2 | sed -e 's!^.*href="\([^"]*\).*</a>\(.*\)</h2>!sqlite3 docSet.dsidx "insert into searchIndex(name,type,path) VALUES (\\"\2\\", \\"Function\\", \\"HttpLuaModule.html\1\\" )"!' > functions.sql
-grep 'class="anchor"' README.markdown| grep h1 | sed -e 's!^.*href="\([^"]*\).*</a>\(.*\)</h1>!sqlite3 docSet.dsidx "insert into searchIndex(name,type,path) VALUES (\\"\2\\", \\"Category\\", \\"HttpLuaModule.html\1\\" )"!' > categories.sql
+grep 'class="anchor"' README.markdown| grep '<h2>' | sed -e 's!^.*href="\([^"]*\).*</a>\(.*\)</h2>!sqlite3 docSet.dsidx "insert into searchIndex(name,type,path) VALUES (\\"\2\\", \\"Function\\", \\"HttpLuaModule.html\1\\" )"!' > functions.sql
+grep 'class="anchor"' README.markdown| grep '<h1>' | sed -e 's!^.*href="\([^"]*\).*</a>\(.*\)</h1>!sqlite3 docSet.dsidx "insert into searchIndex(name,type,path) VALUES (\\"\2\\", \\"Category\\", \\"HttpLuaModule.html\1\\" )"!' > categories.sql
 
 # Insert into sqlite db
 sh functions.sql
