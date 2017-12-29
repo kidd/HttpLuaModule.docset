@@ -5,9 +5,14 @@
   - pandoc
   - perl
   - ruby (nokogiri, sqlite3)
+
 * Best used with
   http://github.com/areina/helm-dash  :)
+
 * Usage
+  mv HttpLuaModule.docSet/ ~/your-docsets-path/
+
+* Generating Docs
   1) make import
   2) mv HttpLuaModule.docSet/ ~/your-docsets-path/
 
@@ -37,12 +42,11 @@
   markdown
    - text: == ngx.say ==
    - link: [ngx.say](#ngxsay)
-   - anchor: == #ngxsay ==
+   - anchor: == #ngxsay == or == #ngx.say == depending on the renderer
 
   I'm trying to fix all that by preserving the dots everywhere and
   using pandoc, which renders anchors like <h1 id="foo">, thus
   allowing dots
-
 
 * Author
   Raimon Grau Cuscó <raimonster@gmail.com>
