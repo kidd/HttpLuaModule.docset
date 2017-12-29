@@ -1,5 +1,9 @@
 * HttpLuaModule.docSet
   Generate dash docs for nginx lua module
+* Dependencies
+  - pandoc
+  - perl
+  - pup
 * Best used with
   http://github.com/areina/helm-dash  :)
 * Usage
@@ -9,6 +13,35 @@
 * Commit new versions
   1) make import
   2) make commit
+
+* approach
+  The existing nginx_lua documentation is a markdown file that comes
+  from a wiki file, converted via an ad-hoc wiki2markdown.pl file.
+
+  The rendering of the markdown in Github renders anchors as <a
+  href="foo" class="anchor">. In this case, "foo" cannot contain any
+  dot, so the wiki2markdown removes all dots (among other characters)
+  in the links, expecting them to match after the github render.
+
+  That leaves us with a markdown that is prepared to be rendered in
+  the github approach, because a link to #ngxsay will link to the
+  header 'ngx.say' (because it will be trimmed), but it's invalid in
+  itself.
+
+  wiki
+   - text: == ngx.say ==
+   - link: [ngx.say][ngx.say]
+   - anchor: == ngx.say ==
+
+  markdown
+   - text: == ngx.say ==
+   - link: [ngx.say](#ngxsay)
+   - anchor: == #ngxsay ==
+
+  I'm trying to fix all that by preserving the dots everywhere and
+  using pandoc, which renders anchors like <h1 id="foo">, thus
+  allowing dots
+
 
 * Author
   Raimon Grau Cuscó <raimonster@gmail.com>
