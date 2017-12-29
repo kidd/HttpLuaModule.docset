@@ -1,9 +1,10 @@
 * HttpLuaModule.docSet
   Generate dash docs for nginx lua module
 * Dependencies
+  - sqlite3
   - pandoc
   - perl
-  - pup
+  - ruby (nokogiri, sqlite3)
 * Best used with
   http://github.com/areina/helm-dash  :)
 * Usage

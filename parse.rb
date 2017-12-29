@@ -1,5 +1,4 @@
 require 'nokogiri'
-require 'pry-byebug'
 require "sqlite3"
 
 class Parser
